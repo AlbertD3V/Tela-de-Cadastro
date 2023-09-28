@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+            ;
+        }
+        .entrada{
+            width: 50%;
+            background-color: rgba(240, 248, 255, 0.79);
+            padding: 0.3;
+            border:none;
+            outline: none;
+            box-shadow: 1px 3px 5px black;
+            border-radius: 4px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("https://wallpaperaccess.com/full/113299.jpg");
+            background-size: cover;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            height: 50%;
+            flex-direction: column;
+            gap: 1rem;
+            
+        }
+        button{
+            width: 30%;
+            padding: 0.04rem;
+            background-color:transparent;
+            border: none;
+            box-shadow: 1px 3px 5px rgb(253, 252, 252);
+            border-radius: 3px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: aliceblue;
+                                   
+        }
+        .sexo{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 0.5;
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(255, 255, 255);
+           
+        }
+
+     
+    
+    </style>
+</head>
+<body>
+<div>
+    <!--nome, senha, email, sexo, cpf -->
+    <input class="entrada" type="text" id="nome" placeholder="digite seu nome">
+    <input class="entrada" type="password" id="senha" placeholder="sua senha">
+    <input class="entrada" type="email" id="email" placeholder="informe seu email">
+    <input class="entrada" type="number" id="cpf" placeholder="digite seu CPF">
+    <div class="sexo">
+    <label for="id"> Masculino 
+    <input type="radio" name="id" >
+    </label>
+    <label for="id">Feminino
+    <input type="radio" name="id" >
+    </label>
+    <label for="id">Outro
+    <input type="radio" name="id" >
+    </label>
+    </div>
+    <button onclick="cadastrar()">cadastrar</button>
+    <button>
+        <a href="http://127.0.0.1:5500/part1.html">Voltar Login</a>
+    </button>
+</div>
+    <script>
+        //criando pessoas cadastradas, se já houive o item banco de dados la dentro ele ira pegar esse item se não cadastro_new sera uma lista vazia
+        //o JSON.PARSE está transformando esse item que esta em string para um objeto
+        cadastro_new = JSON.parse(localStorage.getItem("BANCO_DE_DAD0S")) || [];
+        function cadastrar(){
+            //pegando os dados digitados pelo usuario nos campos
+            nome = document.getElementById("nome").value
+            senha = document.getElementById("senha").value
+            email = document.getElementById("email").email
+            cpf = document.getElementById("cpf").value
+
+           
+        
+            for (pessoa of cadastro_new){
+                if(nome == pessoa.nome && cpf == pessoa.cpf	){
+                    alert("Usuário cadastrado")
+                    return
+                }
+            }
+   //criando uma pessoa nova cadastrada
+            pessoa_nova = {"nome":nome, "senha":senha, "email":email, "cpf":cpf}
+      
+
+            cadastro_new.push(pessoa_nova)
+
+
+            //mandando essa nova lista para o meu local storage
+            localStorage.setItem("BANCO_DE_DADOS", JSON.stringify(cadastro_new))
+
+        }
+
+        
+
+    </script>
+
+
+
+
+</body>
+</html>
